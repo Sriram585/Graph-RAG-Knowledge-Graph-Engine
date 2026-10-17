@@ -1,0 +1,29 @@
+# 1. Secrets & Environment Variables (CRITICAL)
+.env
+*.env
+
+# 2. Virtual Environments
+venv/
+.venv/
+env/
+
+# 3. Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 4. PyVis / Temp HTML Artifacts
+lib/
+*.html
+
+# 5. Raw Data & Intermediate JSONs (Exclude 200 PDFs & 200 raw JSONs)
+data/pdfs/
+data/json/
+
+# Explicitly ALLOW the compiled master graph so cloud deployment works
+!data/master_knowledge_graph.json
+
+# 6. OS & IDE Clutter
+.vscode/
+.DS_Store
+Thumbs.db
