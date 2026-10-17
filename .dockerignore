@@ -1,0 +1,20 @@
+# Never copy Windows virtual environments into a Linux container
+venv/
+.venv/
+env/
+
+# Never bake secrets into an image layer
+.env
+*.env
+
+# Exclude raw PDFs and intermediate JSONs (keep only master_knowledge_graph.json)
+data/pdfs/
+data/json/
+
+# Exclude caches and git history
+__pycache__/
+*.pyc
+lib/
+*.html
+.git/
+.gitignore

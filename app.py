@@ -25,6 +25,9 @@ LABEL_COLORS = {
 def load_engine():
     return GraphRAGEngine()
 
+@st.cache_data(ttl=3600, show_spinner=False)
+def cached_graph_query(_engine, question: str, mode: str) -> dict:
+    return _engine.query(question, mode=mode)
 
 def render_pyvis_subgraph(triples: list, seed_nodes: list) -> str:
     """Builds an interactive HTML physics graph from the retrieved 2-hop triples."""
@@ -133,7 +136,7 @@ def main():
 
     if st.button("Execute Graph-RAG Retrieval", type="primary"):
         with st.spinner("Traversing 2-hop subgraph & synthesizing citations..."):
-            result = engine.query(user_query, mode=search_mode)
+            result = cached_graph_query(engine, user_query, search_mode)
 
         left_col, right_col = st.columns([1.1, 1.2])
 
